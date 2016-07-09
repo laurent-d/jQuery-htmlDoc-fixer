@@ -9,6 +9,7 @@ directly by the browser.
 
 Using jQuery, and given this test.html:
 
+<code>
 <!DOCTYPE HTML>
 <html lang="en-US">
 <head>
@@ -21,9 +22,11 @@ Using jQuery, and given this test.html:
   </div>
 </body>
 </html>
+</code>
 
 This behavior can be seen:
 
+<code>
 $.get( 'test.html', function( html ) {
   // Not great: [, <title>​Test page​</title>, , <div id=​"content">​…​</div>, ]
   console.log( $(html) );
@@ -38,9 +41,12 @@ $.get( 'test.html', function( html ) {
   console.log( $('<div/>').html( html ).find( '#content' ) );
 });
 
+</code>
+
 This, on the other hand, works as you'd expect, and attributes should
 be properly preserved:
 
+<code>
 $.get( 'test.html', function( html ) {
   var hd = $.htmlDoc( html );
   
@@ -49,3 +55,4 @@ $.get( 'test.html', function( html ) {
   console.log( hd.find( 'head' ).length ); // 1
   console.log( hd.find( 'body' ).length ); // 1
 });
+</code>
